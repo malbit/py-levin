@@ -6,7 +6,7 @@
 
 Ask a node for it's peer list, sorted on `last_seen`:
 
-`python3 peer_retreiver.py 212.83.175.67 18080`
+`python3 peer_retreiver.py 77.103.229.42 19993`
 
 ```python
 >> created packet 'handshake'
@@ -16,12 +16,15 @@ Ask a node for it's peer list, sorted on `last_seen`:
 << received packet 'handshake'
 << parsed packet 'handshake'
 
-99.48.XX.XX:18080
-62.24.XX.XX:18080
-93.44.XX.XX:18080
-238.137.XX.XX:18080
-163.86.XX.XX:18080
-250.227.XX.XX:18080
+109.147.xx.xx:19993
+73.252.xx.xx:19993
+54.39.xx.xx:19993
+5.1.xx.xx:19993
+92.222.xx.xx:19993
+51.38.xx.xx:19993
+185.183.xx.xx:19993
+207.244.xx.xx:19993
+47.51.xx.xx:19993
 [...]
 ```
 
@@ -37,11 +40,11 @@ A Levin header (33 bytes) looks like this:
 6. `u_int32` - Flags.
 5. `u_int32` - Protocol version. Usually `01`
 
-The payload that comes after that is a serialized Boost struct, which can be found 
-in the Monero codebase, e.g: [cryptonote_protocol_defs.h](https://github.com/monero-project/monero/blob/58ce16d4d91518b674a5d46419809f56f71d9114/src/cryptonote_protocol/cryptonote_protocol_defs.h).
-The terminology for a (possible nested collection) of structs is called a `Section()` in this module. 
+The payload that comes after that is a serialized Boost struct, which can be found
+in the Arqma codebase, e.g: [cryptonote_protocol_defs.h](https://github.com/arqma/arqma/blob/master/src/cryptonote_protocol/cryptonote_protocol_defs.h).
+The terminology for a (possible nested collection) of structs is called a `Section()` in this module.
 
-For the actual serialization from the perspective of Monero, check out [portable_storage_to_bin.h](https://github.com/monero-project/monero/blob/58ce16d4d91518b674a5d46419809f56f71d9114/contrib/epee/include/storages/portable_storage_to_bin.h)
+For the actual serialization from the perspective of Arqma, check out [portable_storage_to_bin.h](https://github.com/arqma/arqma/blob/master/contrib/epee/include/storages/portable_storage_from_bin.h)
 
 For deserialization look at `Reader.read_storage_entry()` and `Reader.read()`.
 
@@ -50,6 +53,7 @@ Data is almost always in little-endian byte order, with the exception of keys (s
 Lastly, this module is presented as 'best effort' and, for example, does not guarantee that all Levin data types are supported.
 
 ### References
+- [Arqma Network](https://github.com/arqma/arqma)
 - [Monerujo](https://github.com/m2049r/xmrwallet/tree/master/app/src/main/java/com/m2049r/levin)
 - [Monero codebase](https://github.com/monero-project/monero)
 - [CVE-2018-3972](https://www.talosintelligence.com/reports/TALOS-2018-0637/)

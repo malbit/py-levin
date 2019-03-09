@@ -27,7 +27,7 @@ class Section:
     @classmethod
     def handshake_request(cls, my_port: int = 0, network_id: bytes = None, peer_id: bytes = None):
         if not network_id:
-            network_id = bytes.fromhex("1230f171610441611731008216a1a110")  # mainnet
+            network_id = bytes.fromhex("1ffffff111111ffffff11111a")  # mainnet
         if not peer_id:
             peer_id = random.getrandbits(64)
 
@@ -43,7 +43,7 @@ class Section:
         payload_data = Section()
         payload_data.add("cumulative_difficulty", c_uint64(1))
         payload_data.add("current_height", c_uint64(1))
-        genesis_hash = bytes.fromhex("418015bb9ae982a1975da7d79277c2705727a56894ba0fb246adaabb1f4632e3")  # genesis
+        genesis_hash = bytes.fromhex("60077b4d5cd49a1278d448c58b6854993d127fcaedbdeab82acff7f7fd86e328")  # genesis
         payload_data.add("top_id", c_string(genesis_hash))
         payload_data.add("top_version", c_ubyte(1))
         section.add("payload_data", payload_data)
